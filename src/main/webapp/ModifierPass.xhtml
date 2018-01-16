@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Modifier mot de passe</title>
+</h:head>
+
+<h:body>
+	<ui:include src="/WEB-INF/Sidemenu.xhtml" />
+	
+	
+		
+		
+
+	<h:form id="loginForm">
+		<p:growl id="msg" showDetail="true" life="4000" />
+		
+		<p:panel id="modifPnl" header="Modifier mot de passe" style="width: 450px; margin: 50px auto;">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText value="Mot de passe ancien" />
+				<p:password value="#{modifPassBean.oldPass}" feedback="false"/>
+				<p:spacer /><p:spacer />	
+				<h:outputText value="Mot de passe nouveau" />
+				<p:password id="password" value="#{modifPassBean.newPass}" feedback="false"/>
+				<p:message for="password"/>
+			</h:panelGrid>
+			<h:panelGrid columns="1" cellpadding="10" width="100%">
+				<p:commandButton id="modifBtn" actionListener="#{modifPassBean.modifierPass}" value="Modifier" update="loginForm" style="float: right;" />
+			</h:panelGrid>
+		</p:panel>
+		<p:blockUI block="modifPnl" trigger="modifBtn" >
+			LOADING<br />
+			<p:graphicImage value="/images/ajax-loader.gif"/>
+		</p:blockUI>
+	</h:form>
+</h:body>
+</html>

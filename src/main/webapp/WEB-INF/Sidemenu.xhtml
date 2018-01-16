@@ -1,0 +1,23 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    <h:form>
+	    <p:menu>
+	        <p:submenu label="Commande">
+	            <p:menuitem value="Effectuer commande" action="ListCommande" icon="ui-icon-cart" />
+	            <p:menuitem value="Historique" action="Historique" icon="ui-icon-arrowrefresh-1-w"/>
+	        </p:submenu>
+	        <p:submenu label="Compte">
+	            <p:menuitem value="Modifier mot de passe" action="ModifierPass" icon="ui-icon-key"/>
+	            <p:menuitem value="Déconnexion" action="#{loginBean.logout}" icon="ui-icon-power"/>
+	        </p:submenu>
+	        <p:submenu label="Stock">
+	            <p:menuitem value="Afficher les produits" action="ListProduits" icon="ui-icon-script"/>
+	        </p:submenu>
+	    </p:menu>
+ 	</h:form>
+</ui:composition>
+

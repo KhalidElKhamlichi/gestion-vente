@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:metadata>
+	<f:event type="preRenderView" listener="#{histBean.loadCmds}"/>
+</f:metadata>
+ <h:body>
+ 	<ui:include src="/WEB-INF/Sidemenu.xhtml" />
+    <p:dataTable var="cmd" value="#{histBean.cmds}" style="width:900px; margin:auto; text-align: center;">
+    	<f:facet name="header">
+            Historique des commandes
+	    </f:facet>
+    
+	    <p:column headerText="Code commande">
+	        <h:outputText value="#{cmd.codeCmd}" />
+	    </p:column>
+	 
+	    <p:column headerText="Code produit">
+	        <h:outputText value="#{cmd.codePdt}" />
+	    </p:column>
+	 
+	    <p:column headerText="Quantité">
+	        <h:outputText value="#{cmd.qteCmd}" />
+	    </p:column>
+	 
+	    <p:column headerText="Date">
+	        <h:outputText value="#{cmd.dateCmd}" />
+	    </p:column>
+	</p:dataTable>
+	
+</h:body>
+ 
+</html>

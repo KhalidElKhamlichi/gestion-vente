@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+<h:head></h:head>
+
+<h:body>
+	<ui:include src="/WEB-INF/Sidemenu.xhtml" />
+    <p:growl id="growl" showDetail="true" sticky="true" />  
+
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+		
+		<div style="width:900px; margin:auto; text-align: center;">
+		<p:panel id="cmdPnl" style="background:#FFF">
+		<p:dataTable id="cmdDT" var="pdt" selection="#{listProduitsBean.selectedProduit}" value="#{listProduitsBean.produits}" rowKey="#{pdt.codePdt}" >
+	        <f:facet name="header">
+	            Séléctionner le produit à commander
+	        </f:facet>
+	        <p:column selectionMode="single" style="width:16px;text-align:center"/>
+		    <p:column headerText="Nom">
+		        <h:outputText value="#{pdt.nomPdt}" />
+		    </p:column>
+		 
+		    <p:column headerText="Prix">
+		        <h:outputText value="#{pdt.prixPdt}" />
+		    </p:column>
+		 
+		    <p:column headerText="Quantité disponible">
+		        <h:outputText value="#{pdt.qtePdt}" />
+		    </p:column>
+	
+	        
+	    </p:dataTable>
+	    <br/>
+	        	Quantité 
+	        	<p:spinner placeholder="1" min="1" size="4" value="#{listProduitsBean.cmdQte}"/>
+	        	&nbsp;
+	            <p:commandButton id="cmdBtn" update="@form" actionListener="#{listProduitsBean.commander}" icon="ui-icon-cart" value="Commander" />
+   	     </p:panel>
+         </div>
+
+	    <p:blockUI block="cmdPnl" trigger="cmdBtn" >
+		    LOADING<br />
+			<p:graphicImage value="/images/ajax-loader.gif"/>
+		</p:blockUI>
+		
+    </h:form>
+</h:body>
+ 
+</html>
