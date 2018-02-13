@@ -28,11 +28,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     
-   	<context-param>  
-    	<param-name>primefaces.THEME</param-name>  
-    	<param-value>pepper-grinder</param-value>  
-	</context-param>  
-    
+ 
   <welcome-file-list>
     <welcome-file>Login.xhtml</welcome-file>
   </welcome-file-list>
